@@ -1,30 +1,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>fr.inria</groupId>
-  <artifactId>GeneWikiShExJava</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>fr.inria</groupId>
+	<artifactId>GeneWikiShExJava</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>GeneWikiShexJava</name>
-  <url>http://maven.apache.org</url>
+	<name>GeneWikiShexJava</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<java.version>1.8</java.version>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
 
- <dependencies>
-  	<dependency>
-  		<groupId>fr.inria.lille.shexjava</groupId>
-  		<artifactId>shexjava-core</artifactId>
-  		<version>1.0</version>
-  	</dependency>
-  	<dependency>
+	<dependencies>
+		<dependency>
+			<groupId>fr.inria.lille.shexjava</groupId>
+			<artifactId>shexjava-core</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.json</groupId>
 			<artifactId>javax.json-api</artifactId>
 			<version>1.1</version>
 		</dependency>
-  </dependencies>
+	</dependencies>
 </project>
