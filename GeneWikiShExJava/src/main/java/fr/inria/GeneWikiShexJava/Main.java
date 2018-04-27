@@ -26,13 +26,13 @@ import org.eclipse.rdf4j.rio.Rio;
 
 import com.github.jsonldjava.utils.JsonUtils;
 
-import fr.univLille.cristal.shex.graph.RDF4JGraph;
-import fr.univLille.cristal.shex.graph.RDFGraph;
-import fr.univLille.cristal.shex.schema.Label;
-import fr.univLille.cristal.shex.schema.ShexSchema;
-import fr.univLille.cristal.shex.schema.parsing.GenParser;
-import fr.univLille.cristal.shex.validation.RecursiveValidation;
-import fr.univLille.cristal.shex.validation.ValidationAlgorithm;
+import fr.inria.lille.shexjava.graph.RDF4JGraph;
+import fr.inria.lille.shexjava.graph.RDFGraph;
+import fr.inria.lille.shexjava.schema.Label;
+import fr.inria.lille.shexjava.schema.ShexSchema;
+import fr.inria.lille.shexjava.schema.parsing.GenParser;
+import fr.inria.lille.shexjava.validation.RecursiveValidation;
+import fr.inria.lille.shexjava.validation.ValidationAlgorithm;
 
 
 /**
