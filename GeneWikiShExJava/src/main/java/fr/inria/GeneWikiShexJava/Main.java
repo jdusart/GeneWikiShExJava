@@ -12,9 +12,10 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.rdf4j.model.IRI;
+import org.apache.commons.rdf.api.Graph;
+import org.apache.commons.rdf.api.IRI;
+import org.apache.commons.rdf.rdf4j.RDF4J;
 import org.eclipse.rdf4j.model.Model;
-import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.query.BindingSet;
 import org.eclipse.rdf4j.query.TupleQuery;
 import org.eclipse.rdf4j.query.TupleQueryResult;
@@ -26,8 +27,7 @@ import org.eclipse.rdf4j.rio.Rio;
 
 import com.github.jsonldjava.utils.JsonUtils;
 
-import fr.inria.lille.shexjava.graph.RDF4JGraph;
-import fr.inria.lille.shexjava.graph.RDFGraph;
+import fr.inria.lille.shexjava.GlobalFactory;
 import fr.inria.lille.shexjava.schema.Label;
 import fr.inria.lille.shexjava.schema.ShexSchema;
 import fr.inria.lille.shexjava.schema.parsing.GenParser;
@@ -132,8 +132,6 @@ public class Main
     		System.exit(0);      	
     	}
     	
-    	
-    	
     	System.out.println("Schema label: "+selected.get("schemaLabel"));
     	System.out.println("Data label: "+selected.get("dataLabel"));
 
@@ -152,12 +150,15 @@ public class Main
     	fos = new FileOutputStream(dest_data.toString());
     	fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
     	
+    	RDF4J factory = new RDF4J(); 
+		GlobalFactory.RDFFactory = factory; //set the global factory used in shexjava
+    	
     	ShexSchema schema = GenParser.parseSchema(dest_schema);
 		Model data = Rio.parse(new FileInputStream(dest_data.toFile()), "http://www.wikidata.org/", RDFFormat.TURTLE);
-    	RDFGraph dataGraph = new RDF4JGraph(data);
+    	Graph dataGraph = factory.asGraph(data);
 		
-    	IRI focusNode = SimpleValueFactory.getInstance().createIRI("http://www.wikidata.org/entity/"+entity); //to change with what you want 
-		Label shapeLabel = new Label(SimpleValueFactory.getInstance().createIRI((String) selected.get("shapeLabel"))); //to change with what you want 
+    	IRI focusNode = factory.createIRI("http://www.wikidata.org/entity/"+entity); //to change with what you want 
+		Label shapeLabel = new Label(factory.createIRI((String) selected.get("shapeLabel"))); //to change with what you want 
 
 		for (Label label:schema.getRules().keySet())
 			System.out.println(label+": "+schema.getRules().get(label));
@@ -168,7 +169,8 @@ public class Main
 		ValidationAlgorithm validation = new RecursiveValidation(schema, dataGraph);
 		validation.validate(focusNode, shapeLabel);
 		//check the result
-		System.out.println("Does "+focusNode+" has shape "+shapeLabel+"? "+validation.getTyping().contains(focusNode, shapeLabel));
+		boolean result = validation.getTyping().isConformant(focusNode, shapeLabel);
+		System.out.println("Does "+focusNode+" has shape "+shapeLabel+"? "+result);
 
     	//perform validation
     }

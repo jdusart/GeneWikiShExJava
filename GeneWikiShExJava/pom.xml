@@ -4,7 +4,7 @@
 
 	<groupId>fr.inria</groupId>
 	<artifactId>GeneWikiShExJava</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>GeneWikiShexJava</name>
@@ -19,7 +19,7 @@
 		<dependency>
 			<groupId>fr.inria.lille.shexjava</groupId>
 			<artifactId>shexjava-core</artifactId>
-			<version>1.0</version>
+			<version>1.1a</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.json</groupId>
