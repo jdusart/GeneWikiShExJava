@@ -162,8 +162,8 @@ public class Main
 
 		for (Label label:schema.getRules().keySet())
 			System.out.println(label+": "+schema.getRules().get(label));
-		for (Label label:schema.getTripleMap().keySet())
-			System.out.println(label+": "+schema.getTripleMap().get(label));
+		for (Label label:schema.getTripleExprsMap().keySet())
+			System.out.println(label+": "+schema.getTripleExprsMap().get(label));
 		
 		System.out.println("Recursive validation:");
 		ValidationAlgorithm validation = new RecursiveValidation(schema, dataGraph);
